@@ -39,7 +39,8 @@ class Task
     {
         $this->title = $title;
 
-        return $this;
+       return $this;
+
     }
 
     public function getDescription(): ?string
@@ -52,6 +53,7 @@ class Task
         $this->description = $description;
 
         return $this;
+
     }
 
     public function getStatus(): ?string
@@ -64,5 +66,6 @@ class Task
         $this->status = $valeur;
 
         return $this;
+
     }
 }

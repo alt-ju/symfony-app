@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Technique - Tasks{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>My Tasks</h1>
+        {% for task in tasks %}
+            <div>
+                <p>{{ task.title }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
