@@ -25,9 +25,9 @@ class TaskType extends AbstractType
             ->add('description', TextType::class)
             ->add('status', ChoiceType::class, [
                 'choices' => [
-                    'A faire' => 'do',
-                    'En cours' => 'doing',
-                    'Terminée' => 'done'
+                    'A faire' => 'A faire',
+                    'En cours' => 'En cours',
+                    'Terminée' => 'Terminée'
                 ]
             ])
             ->add('save', SubmitType::class)

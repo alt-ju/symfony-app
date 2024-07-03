@@ -17,13 +17,14 @@ class Task
     private ?int $id;
 
     #[ORM\Column(length: 150)]
+    #[Assert\NotBlank]
     private ?string $title;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\Choice(["do", "doing", "done"])]
+    #[Assert\Choice(["A faire", "En cours", "Terminée"])]
     private ?string $status;
 
     public function getId(): ?int

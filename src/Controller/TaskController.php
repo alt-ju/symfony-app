@@ -53,7 +53,7 @@ class TaskController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Your task was added successfully!'
+                'Votre tâche a été ajoutée avec succès !'
             );
 
             return $this->redirectToRoute('tasks');
@@ -85,12 +85,12 @@ class TaskController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Your task was updated successfully!'
+                'Votre tâche a été modifiée avec succès!'
             );
 
             return $this->redirectToRoute('tasks');
         };
-        return $this->render('update_task/index.html.twig', [
+        return $this->render('update_task/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -110,7 +110,7 @@ class TaskController extends AbstractController
 
         $this->addFlash(
             'success',
-            'Your task was deleted successfully !'
+            'Votre tâche a bien été supprimée !'
         );
 
         return $this->redirectToRoute('tasks');
