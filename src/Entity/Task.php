@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
+#[UniqueEntity('title')]
 class Task
 {
     #[ORM\Id]
@@ -15,14 +16,14 @@ class Task
     #[ORM\Column]
     private ?int $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    #[ORM\Column(length: 150)]
+    private ?string $title;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\Choice(["à faire", "en cours", "terminée"])]
+    #[Assert\Choice(["do", "doing", "done"])]
     private ?string $status;
 
     public function getId(): ?int

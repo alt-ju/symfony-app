@@ -3,12 +3,39 @@
 {% block title %}Test Technique - Tasks{% endblock %}
 
 {% block body %}
+
     <div class="container">
-        <h1>My Tasks</h1>
-        {% for task in tasks %}
+        {% for message in app.flashes('success')%}
             <div>
-                <p>{{ task.title }}</p>
+                {{ message }}
             </div>
         {% endfor %}
+
+        <div class="container">
+            <h1>My Tasks</h1>
+            <a href="{{path('new_task')}}" class="btn">Ajouter une tâche</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <td><a href="">{{ task.title }}</a></td>
+                            <td><p>{{ task.status }}</p></td>
+                            <td><a href="{{path('update_task', {id: task.id})}}">Edit</a></td>
+                            <td><a href="{{path('delete_task', {id: task.id})}}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
     </div>
+    
 {% endblock %}

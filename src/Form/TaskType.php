@@ -8,15 +8,28 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints as Assert;
 
-class NewTaskType extends AbstractType
+class TaskType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, [
+                'constraints' => [
+                    new Assert\Length(['min' => 2, 'max' => 150]),
+                    new Assert\NotBlank()
+                ]
+            ])
             ->add('description', TextType::class)
-            ->add('status', TextType::class)
+            ->add('status', ChoiceType::class, [
+                'choices' => [
+                    'A faire' => 'do',
+                    'En cours' => 'doing',
+                    'Terminée' => 'done'
+                ]
+            ])
             ->add('save', SubmitType::class)
         ;
     }

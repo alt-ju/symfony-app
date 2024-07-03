@@ -1,3 +1,27 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
 h1 {
     color: red;
+}
+
+div.container {
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+table {
+    width: 60%;
+    overflow-y: scroll;
+    border: solid 1px black;
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+tr:nth-child(even) {
+    background-color: lightgrey;
 }
