@@ -30,10 +30,10 @@
                 <tbody>
                     {% for task in tasks %}
                         <tr>
-                            <td><a href="">{{ task.title }}</a></td>
+                            <td><a href="{{path('read_task', {id: task.id})}}">{{ task.title }}</a></td>
                             <td><p>{{ task.status }}</p></td>
-                            <td><a href="{{path('update_task', {id: task.id})}}">Modifier</a></td>
-                            <td><a href="{{path('delete_task', {id: task.id})}}">Supprimer</a></td>
+                            <td><a href="{{path('update_task', {id: task.id})}}" class="btn edit">Modifier</a></td>
+                            <td><a href="{{path('delete_task', {id: task.id})}}" class="btn del">Supprimer</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

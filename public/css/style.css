@@ -105,7 +105,23 @@ tr:nth-child(even) {
     background-color: #EBF2FA;
 }
 
-/******* CREATE *******/
+.del {
+ background-color: #c44e48;
+}
+
+.del:hover {
+    background-color: #bd2119;
+}
+
+.edit {
+    background-color: #71d6df;
+}
+
+.edit:hover {
+    background-color: #32acb7;
+}
+
+/******* CREATE & EDIT *******/
 
 .container-create {
     height: fit-content;
