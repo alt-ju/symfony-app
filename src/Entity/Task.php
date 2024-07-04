@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TaskRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
@@ -17,10 +18,13 @@ class Task
     private ?int $id;
 
     #[ORM\Column(length: 150)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message : 'Vous devez remplir ce champ')]
+    #[Assert\Regex('/^\w+/')]
+    #[Assert\Length(min : 2, max: 150)]
     private ?string $title;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\Regex('/^\w+/')]
     private ?string $description = null;
 
     #[ORM\Column(length: 50)]

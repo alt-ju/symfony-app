@@ -139,7 +139,8 @@ tr:nth-child(even) {
 }
 
 .form-group input,
-.form-group select {
+.form-group select, 
+.form-group textarea {
     padding: 0.5rem;
     border-radius: 25px;
     border: solid 1px #5B374D;
