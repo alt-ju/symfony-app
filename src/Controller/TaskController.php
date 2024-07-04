@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Task;
+use App\Form\TaskType;
 use App\Repository\TaskRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\TaskType;
-use App\Entity\Task;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class TaskController extends AbstractController
@@ -22,9 +23,10 @@ class TaskController extends AbstractController
      * @return Response
      */
     #[Route('/task', name: 'tasks')]
+    #[IsGranted('ROLE_USER')]
     public function index(TaskRepository $repository): Response
     {
-        $tasks = $repository->findAll();
+        $tasks = $repository->findBy(['user' => $this->getUser()]);
             
         return $this->render('task/index.html.twig', [
             'tasks' => $tasks
@@ -39,6 +41,7 @@ class TaskController extends AbstractController
      * @return Response
      */
     #[Route('/task/new', name: 'new_task', methods : ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
         $task = new Task();
@@ -47,6 +50,7 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
+            $task->setUser($this->getUser());
             
             $manager->persist($task);
             $manager->flush();
@@ -72,6 +76,7 @@ class TaskController extends AbstractController
      * @return Response
      */
     #[Route('/task/{id}/edit', name: 'update_task', methods: ['GET', 'POST'])]
+    #[Security("is_granted('ROLE_USER') and user === task.getUser()")]
     public function edit(Task $task, Request $request, EntityManagerInterface $manager): Response
     {
 
