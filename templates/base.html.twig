@@ -13,11 +13,13 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('js/javascript.js') }}"></script>
         {% endblock %}
     </head>
     <body>
         <nav>
             <h1><a href="{{path('tasks')}}">My Tasks</a></h1>
+            <a class="btn btn-deco" href="{{path('security_logout')}}">Déconnexion</a>
         </nav>
         {% block body %}{% endblock %}
     </body>

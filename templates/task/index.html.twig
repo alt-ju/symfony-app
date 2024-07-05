@@ -22,6 +22,7 @@
                 <thead>
                     <tr>
                         <th>Titre</th>
+                        <th>Description</th>
                         <th>Statut</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
@@ -29,12 +30,20 @@
                 </thead>
                 <tbody>
                     {% for task in tasks %}
-                        <tr>
+                        
+                        <tr class="blur">
                             <td><a href="{{path('read_task', {id: task.id})}}">{{ task.title }}</a></td>
+                            <td><p>{% set text = task.description %}{{ text|length > 50 ? text|slice(0, 50) ~ '...' : text }}</p></td>
                             <td><p>{{ task.status }}</p></td>
                             <td><a href="{{path('update_task', {id: task.id})}}" class="btn edit">Modifier</a></td>
-                            <td><a href="{{path('delete_task', {id: task.id})}}" class="btn del">Supprimer</a></td>
+                            <td><a data-id="{{task.id}}" class="btn del">Supprimer</a></td>
                         </tr>
+
+                        <div class="confirm-del" id="confirm-del-{{task.id}}">
+                            <p>Êtes-vous sur de vouloir supprimer cette tâche ?</p>
+                            <a href="{{path('delete_task', {id: task.id})}}" class="confirm btn">Oui, je la supprime</a>
+                            <a class="btn cancel" href="">Non, je ne la supprime pas</a>
+                        </div>
                     {% endfor %}
                 </tbody>
             </table> 

@@ -19,6 +19,7 @@ security:
             form_login: 
                 login_path: security_login
                 check_path: security_login
+                default_target_path: /task
                 username_parameter: _username
                 password_parameter: _password
                 enable_csrf: true

@@ -5,8 +5,14 @@
 {% block body %}
 
 <div class="container">
+    
     <div class="container-create">
-        <h1>Créer une tâche</h1>
+         <div class="flex">
+            <h1>Créer une tâche</h1>
+            <div>
+                <a href="{{ path('tasks') }}" class="btn btn-retour">Retour</a>
+            </div>  
+        </div>
         {{form_start(form)}}
 
             <div class="form-group">
