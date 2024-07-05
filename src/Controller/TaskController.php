@@ -48,6 +48,7 @@ class TaskController extends AbstractController
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
+        // If the form is valid and submitted, data will be added in database
         if($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
             $task->setUser($this->getUser());
@@ -71,6 +72,7 @@ class TaskController extends AbstractController
     /**
      * Show a form to update a task identified by its id 
      * 
+     * @param Task $task
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @return Response
@@ -82,6 +84,8 @@ class TaskController extends AbstractController
 
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
+
+        // If the form is valid and submitted, data will be added in database
         if($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
             

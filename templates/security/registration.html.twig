@@ -5,10 +5,12 @@
 {% block body %}
 
 <div class="container">
-    <h1>Inscrivez-vous</h1>
+    
 
-    <div class="container">
-        {{form(form)}}
+    <div class="container registration-form">
+    <h1>Inscrivez-vous !</h1>
+        {{form_start(form)}}
+        {{form_end(form)}}
     </div>
 </div>
 {% endblock %}

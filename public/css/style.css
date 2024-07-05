@@ -42,6 +42,7 @@ a {
 
 button {
     cursor: pointer;
+    border: none;
 }
 
 h1 a {
@@ -83,6 +84,7 @@ div.container {
 .btn {
     width: fit-content;
     padding: 0.5rem 1rem;
+    margin: 0.75rem 0 0 0;
     border-radius: 8px;
     background-color: #ffe590;
 }
@@ -225,4 +227,25 @@ tr:nth-child(even) {
 
 .text {
     word-wrap: break-word;
+}
+
+/******* REGISTRATION *******/
+
+.registration-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form div input {
+    width: 40%;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 25px;
+    border: solid 1px #5B374D;
+    padding: 0.5rem;
+}
+
+/******* LOGIN *******/
+
+.login-form {
+    width: 40%;
 }

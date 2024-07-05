@@ -14,7 +14,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SecurityController extends AbstractController
-{
+{   
+    /**
+     * Connexion function 
+     *
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
+     */
     #[Route('/connexion', name: 'security_login', methods: ["GET", "POST"])]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -30,12 +36,26 @@ class SecurityController extends AbstractController
         $this->redirectToRoute('tasks');
     }
 
+    /**
+     * Logout function where route is specified, everything is handled automatically and in security.yaml
+     *
+     * @param Security $security
+     * @return Response
+     */
     #[Route('/deconnexion', name: 'security_logout')]
     public function logout(Security $security): Response 
     {
        
     }
 
+    /**
+     * Registration function 
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param UserPasswordHasherInterface $passwordHasher
+     * @return Response
+     */
     #[Route('/inscription', name: 'security_registration', methods: ["GET", "POST"])]
     public function registration(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher): Response
     {
@@ -44,6 +64,7 @@ class SecurityController extends AbstractController
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
+        // If the form is valid and submitted, data will be added in database
         if($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $plainpassword = $form->get('plainpassword')->getData();

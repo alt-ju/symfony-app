@@ -35,16 +35,32 @@ class Task
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    /**
+     * Fetch task's id
+     *
+     * @return integer|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * Fetch task's title
+     *
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * Set a title to a task
+     *
+     * @param string $title
+     * @return static
+     */
     public function setTitle(string $title): static
     {
         $this->title = $title;
@@ -53,11 +69,22 @@ class Task
 
     }
 
+    /**
+     * Fetch task's description
+     *
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * Set a decsription to a task
+     *
+     * @param string|null $description
+     * @return static
+     */
     public function setDescription(?string $description): static
     {
         $this->description = $description;
@@ -66,11 +93,22 @@ class Task
 
     }
 
+    /**
+     * Fetch task's status
+     *
+     * @return string|null
+     */
     public function getStatus(): ?string
     {
         return $this->status;
     }
 
+    /**
+     * Set a status to a task
+     *
+     * @param string|null $valeur
+     * @return static
+     */
     public function setStatus(?string $valeur): static
     {
         $this->status = $valeur;
@@ -79,11 +117,22 @@ class Task
 
     }
 
+    /**
+     * Fetch user's information associated to the task
+     *
+     * @return User|null
+     */
     public function getUser(): ?User
     {
         return $this->user;
     }
 
+    /**
+     * Set the user that created the task
+     *
+     * @param User|null $user
+     * @return static
+     */
     public function setUser(?User $user): static
     {
         $this->user = $user;

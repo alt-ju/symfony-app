@@ -20,7 +20,8 @@ class RegistrationType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => [
                     'minlength' => 2, 
-                    'maxlength' => 180
+                    'maxlength' => 180,
+                    'placeholder' => 'exemple@mail.fr'
                 ],
                 'label' => 'Adresse email',
                 'constraints' => [
@@ -33,13 +34,24 @@ class RegistrationType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => [
                     'label' => 'Mot de passe',
+                    'attr' => [
+                        'placeholder' => '********'
+                    ]
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du mot de passe'
+                    'label' => 'Confirmation du mot de passe',
+                    'attr' => [
+                        'placeholder' => '********'
+                    ]
                 ],
                 'invalid_message' => 'Les mots de passe ne correspondent pas.'
+                
             ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn'
+                ]
+            ])
         ;
     }
 
