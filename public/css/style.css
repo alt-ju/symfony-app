@@ -249,3 +249,7 @@ tr:nth-child(even) {
 .login-form {
     width: 40%;
 }
+
+.underline {
+    text-decoration: underline;
+}
