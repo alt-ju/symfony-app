@@ -20,7 +20,7 @@ class Task
     #[ORM\Column(length: 150)]
     #[Assert\NotBlank(message : 'Vous devez remplir ce champ')]
     #[Assert\Regex('/^\w+/')]
-    #[Assert\Length(min : 2, max: 150)]
+    #[Assert\Length(min : 1, max: 150)]
     private ?string $title;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -28,7 +28,7 @@ class Task
     private ?string $description = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\Choice(["A faire", "En cours", "Terminée"])]
+    #[Assert\Choice(["A faire", "En cours", "Terminé"])]
     private ?string $status;
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]

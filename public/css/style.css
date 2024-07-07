@@ -50,7 +50,7 @@ h1 a {
 }
 
 div.box {
-    padding: 3rem 3rem 0 3rem;
+    padding-top: 1.5rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -84,7 +84,7 @@ div.container {
 .btn {
     width: fit-content;
     padding: 0.5rem 1rem;
-    margin: 0.75rem 0 0 0;
+    margin: 0.75rem 0 0.75rem 0;
     border-radius: 8px;
     background-color: #ffe590;
 }
@@ -147,17 +147,27 @@ tr:nth-child(even) {
 }
 
 .confirm-del {
-    background-color: #EBF2FA;
-    width: fit-content;
-    height: 5rem;
+    background-color: #b9b9b9;
+    width: 50%;
+    height: 12rem;
     padding: 1rem;
     border-radius: 1rem;
     z-index: 2;
     position: absolute;
-    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     left: 25%;
     right: 25%;
     display: none;
+}
+
+.title {
+    padding: 1rem;
+    border-radius: 25px;
+}
+.title:hover {
+    background-color: #FFD754;
 }
 
 /******* CREATE & EDIT *******/

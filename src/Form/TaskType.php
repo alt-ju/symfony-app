@@ -19,7 +19,7 @@ class TaskType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'constraints' => [
-                    new Assert\Length(['min' => 2, 'max' => 150]),
+                    new Assert\Length(['min' => 1, 'max' => 150]),
                     new Assert\NotBlank()
                 ], 
                 'label' => 'Titre'
@@ -35,7 +35,7 @@ class TaskType extends AbstractType
                 'choices' => [
                     'A faire' => 'A faire',
                     'En cours' => 'En cours',
-                    'Terminée' => 'Terminée'
+                    'Terminé' => 'Terminé'
                 ], 
                 'label' => 'Statut'
             ])
