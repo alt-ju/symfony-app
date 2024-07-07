@@ -17,7 +17,7 @@
         {% endblock %}
     </head>
     <body>
-        <nav>
+        <nav class="flex">
             <h1><a href="{{path('tasks')}}">Mes Tâches</a></h1>
             {% if app.user %}
             <a class="btn btn-deco" href="{{path('security_logout')}}">Déconnexion</a>
