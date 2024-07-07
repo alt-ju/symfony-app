@@ -36,7 +36,7 @@ Vous trouverez ici une application de gestion de tâches créée en Symfony. Pou
     symfony server:start
     ```
 
-10. Accédez à l'appplication en cliquant sur le lien commençant par "http" dans les réponses de votre terminal. Ou bien en indiquant le lien suivant dans votre navigateur : http://127.0.0.1:8000
+10. Accédez à l'application en cliquant sur le lien commençant par "http" dans les réponses de votre terminal. Ou bien en indiquant le lien suivant dans votre navigateur : http://127.0.0.1:8000
     
 ## Utiliser l'application 
 
