@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Copier configuration nginx custom (assure-toi d'avoir ce fichier)
-COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./config/default.conf /etc/config/default.conf
 
 # Copier le code source dans le conteneur
 WORKDIR /var/www/html
