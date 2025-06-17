@@ -33,11 +33,9 @@
         "symfony/property-access": "6.1.*",
         "symfony/property-info": "6.1.*",
         "symfony/runtime": "6.1.*",
-        "symfony/security": "^5.4",
         "symfony/security-bundle": "6.1.*",
         "symfony/serializer": "6.1.*",
         "symfony/string": "6.1.*",
-        "symfony/symfony": "^7.1",
         "symfony/translation": "6.1.*",
         "symfony/twig-bundle": "6.1.*",
         "symfony/validator": "6.1.*",
@@ -54,10 +52,7 @@
         "symfony/debug-bundle": "6.1.*",
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^7.1",
-        "symfony/profiler-pack": "^1.0",
         "symfony/stopwatch": "6.1.*",
-        "symfony/symfony": "^7.1",
-        "symfony/test-pack": "^1.0",
         "symfony/web-profiler-bundle": "6.1.*"
     },
     "config": {
@@ -102,9 +97,6 @@
         "post-update-cmd": [
             "@auto-scripts"
         ]
-    },
-    "conflict": {
-        "symfony/symfony": "*"
     },
     "extra": {
         "symfony": {
