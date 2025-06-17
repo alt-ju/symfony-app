@@ -25,7 +25,7 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data /var/www/html/var /var/www/html/vendor
 
 # Copier le script de démarrage
-COPY ./docker/start.sh /start.sh
+COPY ./start.sh /start.sh
 RUN chmod +x /start.sh
 
 CMD ["/start.sh"]
