@@ -19,7 +19,7 @@ COPY . .
 
 # Installer Composer et dépendances PHP
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader --no-interaction
 
 # Donner les droits nécessaires (selon Symfony)
 RUN chown -R www-data:www-data /var/www/html/var /var/www/html/vendor
