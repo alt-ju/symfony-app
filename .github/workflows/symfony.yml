@@ -33,7 +33,7 @@ jobs:
           
     # Install dependencies
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run: composer install composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       
     # Create Database
     - name: Create Database
