@@ -34,8 +34,8 @@ jobs:
     # Configure Git
     - name: Setup Git config
       run: |
-        git config --global user.email ${{USER_EMAIL}}
-        git config --global user.name ${{USER_NAME}}
+        git config --global user.email "actions@github.fr"
+        git config --global user.name "actions"
         
     # Install dependencies
     - name: Install Dependencies
