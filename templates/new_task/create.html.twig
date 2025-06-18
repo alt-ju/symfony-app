@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Technique - Créer une tâche{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    
+    <div class="container-create">
+         <div class="flex">
+            <h1>Créer une tâche</h1>
+            <div>
+                <a href="{{ path('tasks') }}" class="btn btn-retour">Retour</a>
+            </div>  
+        </div>
+        {{form_start(form)}}
+
+            <div class="form-group">
+                {{form_label(form.title)}}
+                {{form_widget(form.title)}}
+                {{form_errors(form.title)}}
+            </div>
+            
+            <div class="form-group">
+                {{form_label(form.description)}}
+                {{form_widget(form.description)}}
+                {{form_errors(form.description)}}
+            </div>
+
+            <div class="form-group">
+                {{form_label(form.status)}}
+                {{form_widget(form.status)}}
+                {{form_errors(form.status)}}
+            </div>
+
+            <div class="form-group save-btn">
+                {{form_row(form.save)}}
+            </div>
+
+        {{form_end(form)}}
+    </div>
+    
+</div>
+    
+{% endblock %}
