@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  symfony-tests:
+  symfony:
     runs-on: ubuntu-latest
     steps:
     - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
@@ -30,7 +30,13 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
-          
+
+    # Configure Git
+    - name: Setup Git config
+      run: |
+        git config --global user.email ${{USER_EMAIL}}
+        git config --global user.name ${{USER_NAME}}
+        
     # Install dependencies
     - name: Install Dependencies
       run: composer install composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
