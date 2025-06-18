@@ -40,17 +40,11 @@ jobs:
     # Install dependencies
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    
-    # Create Database
-    - name: Create Database
-      run: |
-        mkdir -p data
-        touch data/database.sqlite
 
     # Run migrations
-    - name: Run Doctrine Migrations
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      run: |
-        php bin/console doctrine:migrations:status
-        php bin/console doctrine:migrations:migrate --no-interaction
+    #- name: Run Doctrine Migrations
+     # env:
+        #DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      #run: |
+        #php bin/console doctrine:migrations:status
+        #php bin/console doctrine:migrations:migrate --no-interaction
