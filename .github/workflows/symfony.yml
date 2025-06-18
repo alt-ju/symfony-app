@@ -34,7 +34,9 @@ jobs:
     # Install dependencies
     - name: Install Dependencies
       run: composer install composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      
+    - name: Composer update
+      run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    
     # Create Database
     - name: Create Database
       run: |
