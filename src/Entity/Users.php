@@ -126,9 +126,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Allow to fetch password not hashed 
      *
-     * @return void
+     * @return string
      */
-    public function getPlainPassword()
+    public function getPlainPassword(): string
     {
         return $this->plainPassword;
     }
@@ -223,7 +223,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->tasks->contains($task)) {
             $this->tasks->add($task);
-            $task->setUser($this);
+            $task->setUsers($this);
         }
 
         return $this;
@@ -239,8 +239,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->tasks->removeElement($task)) {
             // set the owning side to null (unless already changed)
-            if ($task->getUser() === $this) {
-                $task->setUser(null);
+            if ($task->getUsers() === $this) {
+                $task->setUsers(null);
             }
         }
 

@@ -26,7 +26,7 @@ class TaskController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function index(TaskRepository $repository): Response
     {
-        $tasks = $repository->findBy(['user' => $this->getUser()]);
+        $tasks = $repository->findBy(['user' => $this->getUsers()]);
             
         return $this->render('task/index.html.twig', [
             'tasks' => $tasks
@@ -51,7 +51,7 @@ class TaskController extends AbstractController
         // If the form is valid and submitted, data will be added in database
         if($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
-            $task->setUser($this->getUser());
+            $task->setUser($this->getUsers());
             
             $manager->persist($task);
             $manager->flush();
@@ -78,7 +78,7 @@ class TaskController extends AbstractController
      * @return Response
      */
     #[Route('/task/{id}/edit', name: 'update_task', methods: ['GET', 'POST'])]
-    #[Security("is_granted('ROLE_USER') and user === task.getUser()")]
+    #[Security("is_granted('ROLE_USER') and user === task.getUsers()")]
     public function edit(Tasks $task, Request $request, EntityManagerInterface $manager): Response
     {
 

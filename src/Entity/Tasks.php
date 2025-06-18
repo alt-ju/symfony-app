@@ -122,7 +122,7 @@ class Tasks
      *
      * @return Users|null
      */
-    public function getUser(): ?Users
+    public function getUsers(): ?Users
     {
         return $this->user;
     }
@@ -133,7 +133,7 @@ class Tasks
      * @param Users|null $user
      * @return static
      */
-    public function setUser(?Users $user): static
+    public function setUsers(?Users $user): static
     {
         $this->user = $user;
 
