@@ -51,4 +51,6 @@ jobs:
     - name: Run Doctrine Migrations
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      run: php bin/console doctrine:migrations:migrate --no-interaction
+      run: |
+        php bin/console doctrine:migrations:status
+        php bin/console doctrine:migrations:migrate --no-interaction
