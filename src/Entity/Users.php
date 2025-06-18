@@ -126,9 +126,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Allow to fetch password not hashed 
      *
-     * @return string
+     * @return void
      */
-    public function getPlainPassword(): string
+    public function getPlainPassword()
     {
         return $this->plainPassword;
     }
