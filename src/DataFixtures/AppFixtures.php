@@ -2,8 +2,8 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Task;
-use App\Entity\User;
+use App\Entity\Tasks;
+use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -15,7 +15,7 @@ class AppFixtures extends Fixture
 
         // TASKS
         for ($i = 0; $i <= 10; $i++) {
-            $task = new Task();
+            $task = new Tasks();
             $task->setTitle('Tâche ' . $i)
                 ->setDescription('Blablabla')
                 ->setStatus('à faire');

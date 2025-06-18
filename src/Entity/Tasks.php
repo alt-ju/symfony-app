@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[UniqueEntity('title')]
-class Task
+class Tasks
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -33,7 +33,7 @@ class Task
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    private ?Users $user = null;
 
     /**
      * Fetch task's id
@@ -120,9 +120,9 @@ class Task
     /**
      * Fetch user's information associated to the task
      *
-     * @return User|null
+     * @return Users|null
      */
-    public function getUser(): ?User
+    public function getUser(): ?Users
     {
         return $this->user;
     }
@@ -130,10 +130,10 @@ class Task
     /**
      * Set the user that created the task
      *
-     * @param User|null $user
+     * @param Users|null $user
      * @return static
      */
-    public function setUser(?User $user): static
+    public function setUser(?Users $user): static
     {
         $this->user = $user;
 

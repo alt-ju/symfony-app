@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[UniqueEntity('email')]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $createdAt;
 
-    #[ORM\OneToMany(targetEntity: Task::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Tasks::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $tasks;
 
     /**
@@ -206,7 +206,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Fetch tasks associated with a user
      * 
-     * @return Collection<int, Task>
+     * @return Collection<int, Tasks>
      */
     public function getTasks(): Collection
     {
@@ -216,10 +216,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Associate a task to a user
      *
-     * @param Task $task
+     * @param Tasks $task
      * @return static
      */
-    public function addTask(Task $task): static
+    public function addTask(Tasks $task): static
     {
         if (!$this->tasks->contains($task)) {
             $this->tasks->add($task);
@@ -232,10 +232,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * When a user is removed, his tasks are removed, a task cannot be orphan
      *
-     * @param Task $task
+     * @param Tasks $task
      * @return static
      */
-    public function removeTask(Task $task): static
+    public function removeTask(Tasks $task): static
     {
         if ($this->tasks->removeElement($task)) {
             // set the owning side to null (unless already changed)

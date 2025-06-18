@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Task;
+use App\Entity\Tasks;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -44,7 +44,7 @@ class TaskController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
-        $task = new Task();
+        $task = new Tasks();
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
@@ -72,14 +72,14 @@ class TaskController extends AbstractController
     /**
      * Show a form to update a task identified by its id 
      * 
-     * @param Task $task
+     * @param Tasks $task
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @return Response
      */
     #[Route('/task/{id}/edit', name: 'update_task', methods: ['GET', 'POST'])]
     #[Security("is_granted('ROLE_USER') and user === task.getUser()")]
-    public function edit(Task $task, Request $request, EntityManagerInterface $manager): Response
+    public function edit(Tasks $task, Request $request, EntityManagerInterface $manager): Response
     {
 
         $form = $this->createForm(TaskType::class, $task);
@@ -107,12 +107,12 @@ class TaskController extends AbstractController
     /**
      * Delete a task 
      * 
-     * @param Task $task
+     * @param Tasks $task
      * @param EntityManagerInterface $manager
      * @return Response
      */
     #[Route('/task/{id}/delete', name: 'delete_task', methods: ['GET'])]
-    public function delete(EntityManagerInterface $manager, Task $task) : Response
+    public function delete(EntityManagerInterface $manager, Tasks $task) : Response
     {
         $manager->remove($task);
         $manager->flush();
@@ -128,12 +128,12 @@ class TaskController extends AbstractController
     /**
      * Function to read the data of one specific task
      * 
-     * @param Task $task
+     * @param Tasks $task
      * @param Request $request
      * @return Response
      */
     #[Route('/task/{id}', name: 'read_task', methods: ['GET'])]
-    public function read(Task $task, Request $request) : Response
+    public function read(Tasks $task, Request $request) : Response
     {   
         return $this->render('read_task/read.html.twig', [
             'task' => $task,
