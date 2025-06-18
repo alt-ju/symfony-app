@@ -53,8 +53,20 @@ jobs:
     name: Deploy to Railway
     runs-on: ubuntu-latest
     needs: CI
+    
     steps:
-      - name: Deploy with Railway CLI
-        run: railway up
+      - uses: actions/checkout@v3
+      
+      # Installer Railway CLI
+      - name: Install Railway CLI
+        run: curl -fsSL https://railway.app/install.sh | sh
+  
+      # Vérifier que la CLI est installée
+      - name: Check Railway CLI version
+        run: railway --version
+  
+      # Déployer avec Railway
+      - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up
