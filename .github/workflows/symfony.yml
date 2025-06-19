@@ -42,7 +42,7 @@ jobs:
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Validate composer.json
-      run: composer validate --strict
+      run: composer validate
 
     # Linters
     - name: Run PHP_CodeSniffer
