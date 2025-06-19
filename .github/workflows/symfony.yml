@@ -61,25 +61,3 @@ jobs:
       #run: |
         #php bin/console doctrine:migrations:status
         #php bin/console doctrine:migrations:migrate --no-interaction
-
-  CD:
-    name: Deploy to Railway
-    runs-on: ubuntu-latest
-    needs: CI
-    
-    steps:
-      - uses: actions/checkout@v3
-      
-      # Install Railway CLI
-      - name: Install Railway CLI
-        run: curl -fsSL https://railway.app/install.sh | sh
-  
-      # Check Railway CLI Version
-      - name: Check Railway CLI version
-        run: railway --version
-  
-      # Deploy to Railway
-      - name: Deploy to Railway
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --service 577a186d-9326-445d-926f-a9b07040d070
