@@ -1,4 +1,6 @@
 {
+    "name": "vendor/symfony-app",
+    "description": "Symfony app to manage tasks",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
