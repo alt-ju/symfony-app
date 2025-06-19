@@ -41,6 +41,19 @@ jobs:
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
+    - name: Validate composer.json
+      run: composer validate --strict
+
+    # Linters
+    - name: Run PHP_CodeSniffer
+      run: vendor/bin/phpcs
+
+    - name: Run PHPStan
+      run: vendor/bin/phpstan analyse
+
+    - name: Run TwigCS
+      run: vendor/bin/twigcs templates/
+
     # Run migrations
     #- name: Run Doctrine Migrations
      # env:
@@ -57,15 +70,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      # Installer Railway CLI
+      # Install Railway CLI
       - name: Install Railway CLI
         run: curl -fsSL https://railway.app/install.sh | sh
   
-      # Vérifier que la CLI est installée
+      # Check Railway CLI Version
       - name: Check Railway CLI version
         run: railway --version
   
-      # Déployer avec Railway
+      # Deploy to Railway
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
